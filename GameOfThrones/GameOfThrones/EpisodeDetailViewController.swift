@@ -10,12 +10,14 @@ import UIKit
 
 class EpisodeDetailViewController: UIViewController {
 
-    var episode: GOTEpisode?
+    @IBOutlet weak var episodeImage: UIImageView!
+    @IBOutlet weak var episodeDescription: UITextView!
     
+    var episode: GOTEpisode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        episodeDescription.isEditable = false
 
     }
 }
