@@ -138,6 +138,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="GOT Episodes" id="WJk-52-BpJ"/>
+                    <connections>
+                        <outlet property="tableView" destination="bRa-yJ-5z8" id="mrC-WT-ztO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
