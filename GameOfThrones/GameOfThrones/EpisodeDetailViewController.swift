@@ -18,6 +18,13 @@ class EpisodeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         episodeDescription.isEditable = false
-
+        updateUI()
+    }
+    func updateUI() {
+        guard let theEpisode = episode else {
+            fatalError("verify the segue")
+        }
+        episodeImage.image = UIImage(named: theEpisode.originalImageID)
+        episodeDescription.text = theEpisode.summary
     }
 }

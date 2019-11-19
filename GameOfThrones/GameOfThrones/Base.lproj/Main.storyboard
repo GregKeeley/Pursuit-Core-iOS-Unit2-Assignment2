@@ -180,6 +180,10 @@
                         <viewLayoutGuide key="safeArea" id="beb-3w-4zi"/>
                     </view>
                     <navigationItem key="navigationItem" id="bo0-wW-H8Z"/>
+                    <connections>
+                        <outlet property="episodeDescription" destination="jiq-8a-mcH" id="jlX-O5-ku9"/>
+                        <outlet property="episodeImage" destination="0YO-E0-iPb" id="VyO-M5-FIa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xF4-X2-Nf4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
