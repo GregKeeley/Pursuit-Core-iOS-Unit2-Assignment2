@@ -82,9 +82,9 @@ extension ViewController: UISearchBarDelegate {
 //        searchResults = episodes.filter ({$0.prefix(searchText.count) == searchText})
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
     func searchBarResultsListButtonClicked(_ searchBar: UISearchBar) {
-        resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
 }
