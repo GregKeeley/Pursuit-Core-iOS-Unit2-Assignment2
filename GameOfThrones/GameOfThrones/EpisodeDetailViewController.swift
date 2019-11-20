@@ -12,11 +12,13 @@ class EpisodeDetailViewController: UIViewController {
 
     @IBOutlet weak var episodeImage: UIImageView!
     @IBOutlet weak var episodeDescription: UITextView!
+    @IBOutlet weak var titleBar: UINavigationItem!
     
     var episode: GOTEpisode?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         episodeDescription.isEditable = false
         updateUI()
     }

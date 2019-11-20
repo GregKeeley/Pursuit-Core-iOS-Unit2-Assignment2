@@ -16,6 +16,7 @@ class Left_TableViewCell: UITableViewCell {
     @IBOutlet weak var episodeImage: UIImageView!
 
     func configureCell(for episode: GOTEpisode) {
+        
         episodeTitleLabel.text = episode.name
         episodeNumberLabel.text = ("Ep: \(episode.number.description)")
         seasonNumberLabel.text = ("S:\(episode.season.description)")
