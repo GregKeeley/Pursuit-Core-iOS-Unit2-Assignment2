@@ -29,7 +29,6 @@ class ViewController: UIViewController {
     
     func loadData() {
         episodes = GOTEpisode.getSeasons()
-        print(episodes)
     }
     
     
