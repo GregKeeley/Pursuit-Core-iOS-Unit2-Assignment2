@@ -18,6 +18,7 @@ class GOTEpisode {
     var summary: String
     var mediumImageID: String
     var originalImageID: String
+    
     init(airdate: String, id: Int, name: String, number: Int, season: Int, runtime: Int, summary: String, mediumImageID: String, originalImageID: String) {
         self.airdate = airdate
         self.id = id
@@ -29,23 +30,24 @@ class GOTEpisode {
         self.mediumImageID = mediumImageID
         self.originalImageID = originalImageID
     }
-    func getSeasons() -> [[GOTEpisode]] {
-        let sortedEpisodes = GOTEpisode.allEpisodes.sorted { $0.season > $1.season }
+    
+    static func getSeasons() -> [[GOTEpisode]] {
+        let sortedEpisodes = GOTEpisode.allEpisodes.sorted { $0.season < $1.season }
         let uniqueSeasons = Set(sortedEpisodes.map {
             $0.season })
-        let seasons = Array(repeating: [GOTEpisode](), count: uniqueSeasons.count)
+        var seasonsArray = Array(repeating: [GOTEpisode](), count: uniqueSeasons.count)
         var currentIndex = 0
-        let currentSeason = sortedEpisodes.first?.season
+        var currentSeason = sortedEpisodes.first?.season
         for episode in sortedEpisodes {
             if episode.season == currentSeason {
-                seasons[currentIndex].append(episode)
+                seasonsArray[currentIndex].append(episode)
             } else {
                 currentIndex += 1
                 currentSeason = episode.season
-                seasons[currentIndex].append(animal)
+                seasonsArray[currentIndex].append(episode)
             }
         }
-        return seasons
+        return seasonsArray
         
     }
     static let allEpisodes = [

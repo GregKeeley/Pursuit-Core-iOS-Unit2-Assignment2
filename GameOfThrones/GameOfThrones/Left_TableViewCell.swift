@@ -17,8 +17,8 @@ class Left_TableViewCell: UITableViewCell {
 
     func configureCell(for episode: GOTEpisode) {
         episodeTitleLabel.text = episode.name
-        episodeNumberLabel.text = episode.number.description
-        seasonNumberLabel.text = episode.season.description
+        episodeNumberLabel.text = ("Ep: \(episode.number.description)")
+        seasonNumberLabel.text = ("S:\(episode.season.description)")
         episodeImage.image = UIImage(named: episode.mediumImageID)
     }
 }

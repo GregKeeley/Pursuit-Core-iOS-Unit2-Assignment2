@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
-    var episodes = [GOTEpisode]() {
+    var episodes = [[GOTEpisode]]() {
         didSet {
             tableView.reloadData()
         }
@@ -24,10 +24,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         loadData()
+        
     }
     
     func loadData() {
-        episodes = GOTEpisode.allEpisodes
+        episodes = GOTEpisode.getSeasons()
+        print(episodes)
     }
     
     
@@ -37,23 +39,39 @@ class ViewController: UIViewController {
             let indexPath = tableView.indexPathForSelectedRow else {
                 fatalError("did not prepare for segue correctly")
         }
-        let episode = episodes[indexPath.row]
+        let episode = episodes[indexPath.section][indexPath.row]
         episodeDVC.episode = episode
     }
 }
+
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if (episodes[indexPath.section][indexPath.row].season) % 2 == 0 {
+
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "leftCell", for: indexPath) as? Left_TableViewCell else {
             fatalError("Failed to dequeue for LeftCell")
         }
-        let episode = episodes[indexPath.row]
+        let episode = episodes[indexPath.section][indexPath.row]
         cell.configureCell(for: episode)
-        return cell
+            return cell
+                
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "rightCell", for: indexPath) as? Right_TableViewCell else {
+                fatalError("Failed to dequeue for rightCell")
+            }
+            let episode = episodes[indexPath.section][indexPath.row]
+            cell.configureCell(for: episode)
+                return cell
+        }
+        
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return episodes.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 
+        return episodes.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return ("Season\(episodes[section].first?.season.description ?? "0")")
     }
 }
